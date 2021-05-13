@@ -1,0 +1,6 @@
+<div class="mt-5">
+  <%= render 'form', comment: @comment, url: ticket_comment_path(@ticket, @comment), method: :put, submit_content: 'Update comment' %>
+  <div class="text-center mt-3 font-weight-bold">
+    <%= link_to 'Back', ticket_path(@ticket) %>
+  </div>
+</div>

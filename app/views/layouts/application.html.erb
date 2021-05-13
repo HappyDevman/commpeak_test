@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title).presence || 'CommpeakTest' %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+  <% if user_signed_in? %>
+    <div class="profile-info p-3 d-flex flex-column align-items-end">
+      <div class="text-center">
+        <div>Logged in as <strong><%= current_user.email %></strong>
+          <span class="badge badge-info"><%= current_user.role %></span>
+        </div>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-lnk text-center' %>
+      </div>
+    </div>
+  <% end %>
+    <%= yield %>
+  </body>
+</html>

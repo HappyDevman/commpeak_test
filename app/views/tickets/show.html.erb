@@ -1,0 +1,54 @@
+<%= content_for :title, @ticket.name %>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      <h2 class="font-weight-bold mb-0 mr-2"><%= @ticket.name %></h2>
+      <span class="badge badge-info"><%= @ticket.status %></span>
+    </div>
+    <div>
+      <%= link_to 'Set as pending', ticket_path(@ticket, ticket: { status: :pending }), method: :patch, class: 'btn btn-success font-weight-bold mr-2' %>
+      <%= link_to 'Set as resolved', ticket_path(@ticket, ticket: { status: :resolved }), method: :patch, class: 'btn btn-success font-weight-bold' %>
+    </div>
+  </div>
+  <table class="table mt-5">
+    <thead>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Content</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%= @ticket.email %></td>
+      <td><%= @ticket.subject %></td>
+      <td><%= @ticket.content %></td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="text-center">
+    <div class="mb-3">
+      <%= link_to 'Edit', edit_ticket_path(@ticket), class: 'btn btn-outline-dark font-weight-bold mr-2' %>
+      <%= link_to 'Add new comment', new_ticket_comment_path(@ticket), class: 'btn btn-outline-dark font-weight-bold' %>
+    </div>
+  </div>
+  <% if @comments.any? %>
+    <h4 class="font-weight-bold mt-5">Comments</h4>
+    <div class="ticket-comments">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">text</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          <%= render partial: 'comments/item', collection: @comments, as: :comment, locals: { ticket: @ticket }, cached: true %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+  <div class="text-center">
+    <%= link_to 'Back', tickets_path, class: 'font-weight-bold' %>
+  </div>
+</div>

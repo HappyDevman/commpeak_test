@@ -1,0 +1,39 @@
+<%= content_for :title, 'Tickets' %>
+<div class="container-fluid p-5">
+  <div class="d-flex justify-content-between mb-4">
+    <h2 class="font-weight-bold"><%= @tickets.count %> Tickets</h2>
+    <div>
+      <%= link_to 'New Ticket', new_ticket_path, class: 'btn btn-outline-dark mr-3 font-weight-bold' %>
+      <%= link_to 'Import Tickets', import_csv_tickets_path, class: 'btn btn-outline-dark font-weight-bold' %>
+    </div>
+  </div>
+  <div class="d-flex">
+    <%= form_tag tickets_path, method: :get, class: 'd-flex w-25' do %>
+      <div class="input-group w-75 mr-3">
+        <%= search_field_tag :search, @search_term, class: 'form-control rounded input-group-prepend', placeholder: 'Search' %>
+        <div class="input-group-append">
+          <%= submit_tag 'search', class: 'btn btn-outline-primary' %>
+        </div>
+      </div>
+      <div class="w-25">
+        <%= select_tag :filter_status, options_for_select(%w[initial pending resolved], @filter_status), class: 'form-control', prompt: 'Status' %>
+      </div>
+    <% end %>
+  </div>
+  <table class="tickets-table table table-hover mt-5">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Content</th>
+        <th scope="col">Status</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render partial: 'item', collection: @tickets, as: :ticket, cached: true %>
+    </tbody>
+  </table>
+</div>

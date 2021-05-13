@@ -1,0 +1,7 @@
+<%= content_for :title, 'New ticket' %>
+<div class="mt-5">
+  <%= render 'form', ticket: @ticket, url: submit_tickets_path, method: :post, submit_content: 'Submit Ticket' %>
+  <div class="text-center mt-4 font-weight-bold">
+    <%= link_to 'Back', tickets_path, class: 'font-weight-bold' %>
+  </div>
+</div>

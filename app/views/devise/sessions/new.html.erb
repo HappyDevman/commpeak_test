@@ -1,0 +1,31 @@
+<div class="container w-50">
+  <h2 class="my-5 text-center font-weight-bold">Log in</h2>
+  <hr>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'custom-form mb-4' }) do |f| %>
+    <div class="field mb-4">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
+
+    <div class="field mb-4">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field mb-5 custom-control custom-checkbox">
+        <%= f.check_box :remember_me, class: "custom-control-input", id: "remember_password" %>
+        <%= f.label :remember_me, class: "custom-control-label", for: "remember_password" %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Log in", class: "btn btn-outline-dark w-50" %>
+    </div>
+  <% end %>
+
+  <div class="text-center">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

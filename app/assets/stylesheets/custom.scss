@@ -1,0 +1,17 @@
+.custom-form {
+  label {
+    font-weight: bold;
+  }
+  .actions {
+    text-align: center;
+    input {
+      font-weight: bold;
+    }
+  }
+}
+
+.tickets-table {
+  tbody tr td {
+    vertical-align: middle;
+  }
+}

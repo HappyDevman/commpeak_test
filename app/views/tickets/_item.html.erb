@@ -1,0 +1,12 @@
+<tr>
+  <td><%= link_to ticket.name, ticket %></td>
+  <td><%= ticket.email %></td>
+  <td><%= ticket.subject %></td>
+  <td><%= ticket.content %></td>
+  <td class="text-success"><%= ticket.status %></td>
+  <td class="d-flex justify-content-end">
+    <%= link_to 'Edit', edit_ticket_path(ticket), class: 'btn btn-outline-dark py-1' %>
+    <%= link_to 'Delete', ticket_path(ticket), method: :delete, data: { confirm: 'Are you sure you want to delete this ticket?' },
+                class: 'btn btn-outline-danger py-1 ml-2' %>
+  </td>
+</tr>
