@@ -7,7 +7,8 @@ Commpeak_test is a test project built by Ruby on Rails.
 
 ```bash
 bundle install
-EXPORT DB_PASSWORD="your postgresql password"
+yarn install
+export DB_PASSWORD="your postgresql password"
 bundle exec rails db:setup
 bundle exec rails s
 ```
@@ -40,6 +41,8 @@ bundle exec rails s
 I added seed data for basic and manager users so you can test everything with each user.
 - For basic user role, please sign in with `basic@commpeak.com` email and `password` password
 - For manager user role, please sign in with `manager@commpeak.com` email and `password` password
+
+Please visit `localhost:3000` and make sure if all features are working properly
 
 Please make sure if all test is passed by following in terminal
 ``` bash

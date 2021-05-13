@@ -15,6 +15,8 @@ class CsvImporter
 
   def call
     file = "#{Rails.root}/public/tickets.csv"
+    return false unless File.exist?(file)
+
     csv_text = File.read(file)
     csv = CSV.parse(csv_text, headers: true)
     length = 0

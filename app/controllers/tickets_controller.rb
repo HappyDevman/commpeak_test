@@ -54,8 +54,9 @@ class TicketsController < ApplicationController
 
   # GET /import_csv
   def import_csv
-    import_count = CsvImporter.call(current_user)
-    redirect_to tickets_path, notice: "#{import_count} tickets was successfully imported."
+    result = CsvImporter.call(current_user)
+    notification = result ? { notice: "#{result} tickets was successfully imported." } : { alert: "Can't find csv file" }
+    redirect_to tickets_path, notification
   end
 
   private
