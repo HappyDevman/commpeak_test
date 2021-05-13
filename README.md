@@ -21,7 +21,7 @@ bundle exec rails s
 
 - Tickets CRUD management
     1. Ticket model has `name`, `email`, `subject`, `content` and `status` attributes and belongs to User
-    2. Save new submitted ticket to CSV file
+    2. Save new submitted ticket to CSV file in `/public/tickets.csv`
     3. Import CSV file and save records to model
     4. View for tickets management (new, edit, update, delete, change status)
     5. Search and filter for tickets across all attributes
